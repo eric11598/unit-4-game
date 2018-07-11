@@ -76,49 +76,53 @@ var enemyChosen = false;
 var character = "";
 var enemy = "";
 
-function fightStage()
+function enemyStage()
 {
 
 
     console.log("CHARACTER "+character);
     console.log("enemy " +enemy);
 
-    $( "#character1" ).empty();
-    $( "#character2" ).hide();
-    $( "#character3" ).hide();
-
-    $( "#enemy1" ).empty();
-    $( "#enemy2" ).hide();
-    $( "#enemy3" ).hide();
+    $( "#enemy1" ).show();
+    $( "#enemy2" ).show();
+    $( "#enemy3" ).show();
 
    
 
-    $("#character1").prepend(eval(character).imageSelect);
-    $("#enemy1").prepend(eval(enemy).imageSelect);
+    //$("#character1").prepend(eval(character).imageSelect);
+    //$("#enemy1").prepend(eval(enemy).imageSelect);
 
 
 }
 
-
+/*
 for (i = 0; i<characterArray.length; i++)
 {
-    $(charDivArray[i]).prepend(characterArray[i].imageSelect);
+    $(charDivArray[i]).append(characterArray[i].imageSelect);
     $(enemyDivArray[i]).prepend(enemyArray[i].imageSelect);
 
     console.log(characterArray[i]);
-}
+}*/
+
+$( "#enemy1" ).hide();
+$( "#enemy2" ).hide();
+$( "#enemy3" ).hide();
 
 
 $(".character").on("click", function() {
-    
-    if(!characterChosen)
-    {
-      character = $(this).val();
-      console.log("Character "+character);
-      characterChosen = true;
-    }
 
-    });
+    $( "#character1" ).hide();
+    $( "#character2" ).hide();
+    $( "#character3" ).hide();
+
+
+    character = $(this).val();
+    $(this).show();
+    console.log("Character "+character);
+    characterChosen = true;
+    enemyStage();
+    
+});
 
 
 $(".enemy").on("click", function() {
