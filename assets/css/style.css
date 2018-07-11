@@ -1,0 +1,14 @@
+#guess1,#guess2,#guess3,#guess4,#guess5,#guess6,#guess7,#guess8,#guess9,#guess10 
+{
+    display:inline;
+}
+
+.characterSelect{
+    width: 200px;
+    height: 200px;
+}
+
+#status
+{
+    text-align: center;
+}
