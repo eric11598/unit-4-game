@@ -83,6 +83,7 @@ function enemyStage()
     console.log("CHARACTER "+character);
     console.log("enemy " +enemy);
 
+    $("#enemyStatus").show();
     $( "#enemy1" ).show();
     $( "#enemy2" ).show();
     $( "#enemy3" ).show();
@@ -104,9 +105,16 @@ for (i = 0; i<characterArray.length; i++)
     console.log(characterArray[i]);
 }*/
 
-$( "#enemy1" ).hide();
-$( "#enemy2" ).hide();
-$( "#enemy3" ).hide();
+$("#enemyStatus").hide();
+$("#enemy1").hide();
+$("#enemy2").hide();
+$("#enemy3").hide();
+
+
+$("#defenderStatus").hide();
+//$("#defender1").hide();
+$("#defender2").hide();
+$("#defender3").hide();
 
 
 $(".character").on("click", function() {
@@ -115,10 +123,10 @@ $(".character").on("click", function() {
     $( "#character2" ).hide();
     $( "#character3" ).hide();
 
-
+    $("#characterStatus").html("<h1>YOUR CHARACTER</h1>");
     character = $(this).val();
     $(this).show();
-    console.log("Character "+character);
+    
     characterChosen = true;
     enemyStage();
     
@@ -127,22 +135,21 @@ $(".character").on("click", function() {
 
 $(".enemy").on("click", function() {
     
-    if(characterChosen && !enemyChosen)
-    {
-        enemy = $(this).val();
-        console.log("Character "+enemy);
-        enemyChosen = true;
-    }
+    enemy = $(this).val();
+    //$(this).hide();
 
-    if(enemyChosen)
-    {   
-        console.log("WE ARE HERE NOW");
-        fightStage();
-    }
+    console.log(this.value);
+
+    var temp = '<div id = "defender1" style="float:left"></div>'
+
+    $(this).appendTo("butt");
 
 
+    $("#defenderStatus").show();
+    console.log("WERE hEREEE NOWWWWW "+enemy);
+    enemyChosen = true;
     
-        });
+});
 
 
 

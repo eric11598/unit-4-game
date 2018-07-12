@@ -9,57 +9,50 @@
 </head>
 
 <body>
-        <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                  <h1 class="display-4">Fluid jumbotron</h1>
-                  <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-                </div>
-              </div>
 
-
-
+  
+  <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <div id = "status">PICK A FIGHTER</div>
-        <br>
+      <h1 class="display-4">Fluid jumbotron</h1>
+      <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
+  </div>
 
-        <div class="row">
-          
-          <div class="col-md-12" id="">
-          
-          <div id = "fighter1" style="float: left">
+
+  <div class="container">
+    
+    
+    <br>
+
+    <div class="row">
+      <div class="col-md-12" id="">
+          <div id = "characterStatus" style="text-align: left"> <h1>PICK A FIGHTER</h1></div>
+
+        <div id = "fighter1" style="float: left">
           <button id="character1" class="btn btn-primary character" value="ryu">
 
             <div class = "description">
               RYU <br>
               HEALTH: <div id = "ryuhealth" style="display:inline"> 100 </div><br>
               ATTACK: <div id = "ryuattack" style="display:inline"> 100 </div>
-
             </div>
 
-          <img class="characterSelect" src="assets/images/ryu_character_select.jpg" style="float:left"/>
-
-
+            <img class="characterSelect" src="assets/images/ryu_character_select.jpg" style="float:left"/>
           </button>
+        </div>
 
-
-          </div>
-
-        
-
-          <div id = "fighter2" style="float:left">
-              <button id="character2" class="btn btn-primary character" value="ken">
+        <div id = "fighter2" style="float:left">
+          <button id="character2" class="btn btn-primary character" value="ken">
+            <div class = "description">
+              Ken <br>
+              HEALTH: <div id = "ryuhealth" style="display:inline"> 100 </div><br>
+              ATTACK: <div id = "ryuattack" style="display:inline"> 100 </div>
+            </div>
     
-                <div class = "description">
-                  Ken <br>
-                  HEALTH: <div id = "ryuhealth" style="display:inline"> 100 </div><br>
-                  ATTACK: <div id = "ryuattack" style="display:inline"> 100 </div>
-    
-                </div>
-    
-              <img class="characterSelect" src="assets/images/ken_character_select.jpg" style="float:left"/>
+            <img class="characterSelect" src="assets/images/ken_character_select.jpg" style="float:left"/>
     
     
-              </button>
+            </button>
     
     
               </div>
@@ -92,9 +85,10 @@
         <div class="row">
 
           <div class="col-md-12" id = "">
+              <div id = "enemyStatus" style="text-align: left"> <h1>PICK AN ENEMY</h1></div>
 
               <div id = "enemy1" style="float:left">
-                  <button id="enemy1" class="btn btn-primary character" value="bison">
+                  <button id="enemy1" class="btn btn-primary enemy" value="bison">
         
                     <div class = "description">
                       Bison <br>
@@ -112,7 +106,7 @@
                   </div>
 
                   <div id = "enemy2" style="float:left">
-                      <button id="enemy2" class="btn btn-primary character" value="vega">
+                      <button id="enemy2" class="btn btn-primary enemy" value="vega">
             
                         <div class = "description">
                           Vega <br>
@@ -130,7 +124,7 @@
                       </div>
 
                       <div id = "enemy3" style="float:left">
-                          <button id="enemy3" class="btn btn-primary character" value="sagat">
+                          <button id="enemy3" class="btn btn-primary enemy" value="sagat">
                 
                             <div class = "description">
                               Sagat <br>
@@ -151,6 +145,85 @@
 
 
           </div>
+
+          <br>
+
+
+          <div class="row"> 
+
+              <div class="col-md-12" id = "">
+              <div id = "defenderStatus"><h1>DEFENDER</h1></div>
+  
+            </div>
+          </div>
+
+
+          <div class="row">
+
+              <div class="col-md-12" id = "">
+
+                <butt>buns</butt>
+                  <!---<div id = "defender1" style="float:left">buns</div>
+                  <!----
+                      <button id="defender1" class="btn btn-primary defender" value="bison">
+            
+                        <div class = "description">
+                          Bison <br>
+                          HEALTH: <div id = "bisonhealth" style="display:inline"> 100 </div><br>
+                          ATTACK: <div id = "bisonattack" style="display:inline"> 100 </div>
+            
+                        </div>
+            
+                      <img class="characterSelect" src="assets/images/bison_character_select.jpg" style="float:left"/>
+            
+            
+                      </button>
+            
+            
+                      </div>-->
+    
+                      <div id = "defender2" style="float:left">
+                          <button id="defender2" class="btn btn-primary defender" value="vega">
+                
+                            <div class = "description">
+                              Vega <br>
+                              HEALTH: <div id = "vegahealth" style="display:inline"> 100 </div><br>
+                              ATTACK: <div id = "vegaattack" style="display:inline"> 100 </div>
+                
+                            </div>
+                
+                          <img class="characterSelect" src="assets/images/vega_character_select.jpg" style="float:left"/>
+                
+                
+                          </button>
+                
+                
+                          </div>
+    
+                          <div id = "defender3" style="float:left">
+                              <button id="defender3" class="btn btn-primary defender" value="sagat">
+                    
+                                <div class = "description">
+                                  Sagat <br>
+                                  HEALTH: <div id = "sagathealth" style="display:inline"> 100 </div><br>
+                                  ATTACK: <div id = "sagatattack" style="display:inline"> 100 </div>
+                    
+                                </div>
+                    
+                              <img class="characterSelect" src="assets/images/sagat_character_select.jpg" style="float:left"/>
+                    
+                    
+                              </button>
+                    
+                    
+                              </div>
+    
+                            </div>
+    
+    
+              </div>
+
+
         </div>
 
 
