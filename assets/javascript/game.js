@@ -142,7 +142,7 @@ $(".enemy").on("click", function() {
 
     var temp = '<div id = "defender1" style="float:left"></div>'
 
-    $(this).appendTo("butt");
+    $(this).appendTo("defender");
 
 
     $("#defenderStatus").show();
