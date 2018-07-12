@@ -8,8 +8,9 @@ $(document).ready(function() {
 var ryu =
 {
   name: "ryu",
-  baseAttack: 5,
-  Attack: 5,
+  baseAttack: 10,
+  attack: 10,
+  health: 100,
   imageSelect: '<img class="characterSelect" src="assets/images/ryu_character_select.jpg" />',
   announcerSound: "assets/sounds/snd_se_narration_characall_Snake.wav",
 }
@@ -142,11 +143,17 @@ $(".enemy").on("click", function() {
 
     var temp = '<div id = "defender1" style="float:left"></div>'
 
-    $(this).appendTo("defender");
-
-
+    
+    $(this).detach().appendTo("defender");
+    $("#enemyContainer").hide();
     $("#defenderStatus").show();
     console.log("WERE hEREEE NOWWWWW "+enemy);
+
+    var button = '<button id="attack" class="btn btn-primary enemy" value="">Attack!</button>';
+
+    $("#characterContainer").append(button);
+
+    
     enemyChosen = true;
     
 });
