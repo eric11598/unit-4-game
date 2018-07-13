@@ -29,12 +29,12 @@
           <div id = "characterStatus" style="text-align: left"> <h1>PICK A FIGHTER</h1></div>
 
         <div id = "fighter1" style="float: left">
-          <button id="character1" class="btn btn-primary character" value="ryu">
+          <button id="ryu" class="btn btn-primary character" value="ryu">
 
             <div class = "description">
               RYU <br>
-              HEALTH: <div id = "ryuhealth" style="display:inline"> 100 </div><br>
-              ATTACK: <div id = "ryuattack" style="display:inline"> 100 </div>
+              HEALTH: <div id = "ryuHealth" style="display:inline"> 100 </div><br>
+              ATTACK: <div id = "ryuAttack" style="display:inline"> 5 </div>
             </div>
 
             <img class="characterSelect" src="assets/images/ryu_character_select.jpg" style="float:left"/>
@@ -42,17 +42,19 @@
         </div>
 
         <div id = "fighter2" style="float:left">
-          <button id="character2" class="btn btn-primary character" value="ken">
+          <button id="ken" class="btn btn-primary character" value="ken">
             <div class = "description">
               Ken <br>
-              HEALTH: <div id = "ryuhealth" style="display:inline"> 100 </div><br>
-              ATTACK: <div id = "ryuattack" style="display:inline"> 100 </div>
+              HEALTH: <div id = "kenHealth" style="display:inline"> 125 </div><br>
+              ATTACK: <div id = "kenAttack" style="display:inline"> 4 </div>
             </div>
     
             <img class="characterSelect" src="assets/images/ken_character_select.jpg" style="float:left"/>
     
     
             </button>
+
+           
     
     
               </div>
@@ -60,12 +62,12 @@
               
 
               <div id = "fighter3" style="float:left">
-                  <button id="character3" class="btn btn-primary character" value="guile">
+                  <button id="guile" class="btn btn-primary character" value="guile">
         
                     <div class = "description">
                       Guile <br>
-                      HEALTH: <div id = "ryuhealth" style="display:inline"> 100 </div><br>
-                      ATTACK: <div id = "ryuattack" style="display:inline"> 100 </div>
+                      HEALTH: <div class = "guileHealth" style="display:inline"> 100 </div><br>
+                      ATTACK: <div class = "guileAttack" style="display:inline"> 100 </div>
         
                     </div>
         
@@ -76,6 +78,10 @@
         
         
                   </div>
+
+                  <button id="attackButton" class="btn btn-primary attackButton" value="">Attack!</button>
+                  <button id="playButton" class="btn btn-primary btn-lg" value="">Play Again!</button>
+                  <div id = "fightStatus">FIGHT STATUS</div>
 
           </div>
 
@@ -98,12 +104,12 @@
 
               
               <div id = "enemy1" style="float:left">
-                  <button id="enemy1" class="btn btn-primary enemy" value="bison">
+                  <button id="bison" class="btn btn-primary enemy" value="bison">
         
                     <div class = "description">
                       Bison <br>
-                      HEALTH: <div id = "ryuhealth" style="display:inline"> 100 </div><br>
-                      ATTACK: <div id = "ryuattack" style="display:inline"> 100 </div>
+                      HEALTH: <div id = "bisonHealth" style="display:inline"> 100 </div><br>
+                      ATTACK: <div id = "bisonAttack" style="display:inline"> 100 </div>
         
                     </div>
         
@@ -116,12 +122,12 @@
                   </div>
 
                   <div id = "enemy2" style="float:left">
-                      <button id="enemy2" class="btn btn-primary enemy" value="vega">
+                      <button id="vega" class="btn btn-primary enemy" value="vega">
             
                         <div class = "description">
                           Vega <br>
-                          HEALTH: <div id = "ryuhealth" style="display:inline"> 100 </div><br>
-                          ATTACK: <div id = "ryuattack" style="display:inline"> 100 </div>
+                          HEALTH: <div id = "vegaHealth" style="display:inline"> 100 </div><br>
+                          ATTACK: <div id = "vegaAttack" style="display:inline"> 100 </div>
             
                         </div>
             
@@ -134,12 +140,12 @@
                       </div>
 
                       <div id = "enemy3" style="float:left">
-                          <button id="enemy3" class="btn btn-primary enemy" value="sagat">
+                          <button id="sagat" class="btn btn-primary enemy" value="sagat">
                 
                             <div class = "description">
                               Sagat <br>
-                              HEALTH: <div id = "ryuhealth" style="display:inline"> 100 </div><br>
-                              ATTACK: <div id = "ryuattack" style="display:inline"> 100 </div>
+                              HEALTH: <div id = "sagatHealth" style="display:inline"> 100 </div><br>
+                              ATTACK: <div id = "sagatAttack" style="display:inline"> 100 </div>
                 
                             </div>
                 

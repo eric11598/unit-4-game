@@ -8,127 +8,138 @@ $(document).ready(function() {
 var ryu =
 {
   name: "ryu",
-  baseAttack: 10,
-  attack: 10,
+  baseAttack: 5,
+  attack: 5,
   health: 100,
-  imageSelect: '<img class="characterSelect" src="assets/images/ryu_character_select.jpg" />',
-  announcerSound: "assets/sounds/snd_se_narration_characall_Snake.wav",
+  originalHealth: 100,
 }
 
 var ken =
 {
   name: "ken",
-  baseAttack: 5,
-  Attack: 5,
-  imageSelect: '<img class="characterSelect" src="assets/images/ken_character_select.jpg" />',
-  announcerSound: "assets/sounds/snd_se_narration_characall_Snake.wav",
+  baseAttack: 4,
+  attack: 4,
+  health: 125,
+  originalHealth: 125,
 }
 
 var guile =
 {
   name: "guile",
-  baseAttack: 5,
-  Attack: 5,
-  imageSelect: '<img class="characterSelect" src="assets/images/guile_character_select.jpg" />',
-  announcerSound: "assets/sounds/snd_se_narration_characall_Snake.wav",
+  baseAttack: 3,
+  attack: 3,
+  health: 150,
+  originalHealth: 150,
+
 }
 
 var bison =
 {
   name: "bison",
-  baseAttack: 5,
-  Attack: 5,
-  imageSelect: '<img class="characterSelect" src="assets/images/bison_character_select.jpg" />',
-  announcerSound: "assets/sounds/snd_se_narration_characall_Snake.wav",
+  baseAttack: 20,
+  attack: 20,
+  health: 200,
+  originalHealth: 200,  
 }
 
 var vega =
 {
   name: "vega",
   baseAttack: 5,
-  Attack: 5,
-  imageSelect: '<img class="characterSelect" src="assets/images/vega_character_select.jpg" />',
-  announcerSound: "assets/sounds/snd_se_narration_characall_Snake.wav",
+  attack: 5,
+  health: 100,
+  originalHealth: 100,
 }
 
 var sagat =
 {
   name: "sagat",
   baseAttack: 5,
-  Attack: 5,
-  imageSelect: '<img class="characterSelect" src="assets/images/sagat_character_select.jpg" />',
-  announcerSound: "assets/sounds/snd_se_narration_characall_Snake.wav",
+  attack: 5,
+  health: 150,
+  originalHealth: 150,
 }
 
-characterArray = [ryu, ken, guile];
-enemyArray = [bison, sagat, vega];
-
-charDivArray = ["#character1", "#character2", "#character3"];
-enemyDivArray = ["#enemy1", "#enemy2", "#enemy3"];
+var characterArray = [ryu, ken, guile, bison, sagat, vega];
 
 
 
-
-
-
-
-var characterChosen = false;
-var enemyChosen = false;
 var character = "";
 var enemy = "";
 
-function enemyStage()
+function play(){
+
+for (i = 0 ; i<characterArray.length; i++)
 {
+    characterArray[i].health = characterArray[i].originalHealth;
+    characterArray[i].attack = characterArray[i].baseAttack;
+}
+
+$("#enemyStatus").hide();
+$("#bison").hide();
+$("#vega").hide();
+$("#sagat").hide();
+
+$("#ryu").show();
+$("#ken").show();
+$("#guile").show();
 
 
-    console.log("CHARACTER "+character);
-    console.log("enemy " +enemy);
 
-    $("#enemyStatus").show();
-    $( "#enemy1" ).show();
-    $( "#enemy2" ).show();
-    $( "#enemy3" ).show();
+$("#attackButton").hide();
+$("#fightStatus").hide();
+$("#defenderStatus").hide();
+$("#playButton").hide();
 
-   
-
-    //$("#character1").prepend(eval(character).imageSelect);
-    //$("#enemy1").prepend(eval(enemy).imageSelect);
-
+$("#characterStatus").html("<h1>PICK YOUR CHARACTER</h1>");
+$("#characterContainer").show();
 
 }
 
-/*
-for (i = 0; i<characterArray.length; i++)
+play();
+
+
+function enemyStage()
 {
-    $(charDivArray[i]).append(characterArray[i].imageSelect);
-    $(enemyDivArray[i]).prepend(enemyArray[i].imageSelect);
+    $("#attackButton").hide();
+    $("#fightStatus").hide();
 
-    console.log(characterArray[i]);
-}*/
+    $("#enemyStatus").show();
+    $("#defenderStatus").hide();
 
-$("#enemyStatus").hide();
-$("#enemy1").hide();
-$("#enemy2").hide();
-$("#enemy3").hide();
+    $("#bison").show();
+    $("#vega").show();
+    $("#sagat").show();
+
+}
+
+function rewrite()
+
+{
+    var characterDiv = "#"+character.name+"Health";
+    $(characterDiv).text(character.health);
+    $("#characterAttack").text(eval(character).attack);
+
+    var enemyHealthDiv = "#"+enemy.name+"Health";
+    $(enemyHealthDiv).text(enemy.health);
+}
 
 
-$("#defenderStatus").hide();
-//$("#defender1").hide();
-$("#defender2").hide();
-$("#defender3").hide();
+
+
 
 
 $(".character").on("click", function() {
 
-    $( "#character1" ).hide();
-    $( "#character2" ).hide();
-    $( "#character3" ).hide();
+    $( "#ryu" ).hide();
+    $( "#ken" ).hide();
+    $( "#guile" ).hide();
 
     $("#characterStatus").html("<h1>YOUR CHARACTER</h1>");
     character = $(this).val();
     $(this).show();
     
-    characterChosen = true;
+
     enemyStage();
     
 });
@@ -137,106 +148,70 @@ $(".character").on("click", function() {
 $(".enemy").on("click", function() {
     
     enemy = $(this).val();
-    //$(this).hide();
-
-    console.log(this.value);
-
-    var temp = '<div id = "defender1" style="float:left"></div>'
-
-    
     $(this).detach().appendTo("defender");
     $("#enemyContainer").hide();
     $("#defenderStatus").show();
-    console.log("WERE hEREEE NOWWWWW "+enemy);
 
-    var button = '<button id="attack" class="btn btn-primary enemy" value="">Attack!</button>';
-
-    $("#characterContainer").append(button);
-
+    $("#attackButton").show();
+    $("#fightStatus").show();
     
-    enemyChosen = true;
+});
+
+$("#playButton").on("click", function() {
+    
+console.log("LOLOLOL");
+play();
     
 });
 
 
 
+// ATTACK STAGE
+
+$("#attackButton").on("click", function() {
+
+    character = eval(character);
+    enemy = eval(enemy);
 
 
-        
-/*
-secondNumber += $(this).val();
-$("#second-number").text(secondNumber);*/
+    $("#fightStatus").text(character.name +" ATTACKED " + enemy.name + " FOR "+ character.attack+" DAMAGE!");
+    $("#fightStatus").append("<p>"+ enemy.name +" COUNTER ATTACKED FOR "+enemy.attack +" damage!");
 
+    character.health-=enemy.attack;
+    enemy.health-=character.attack;
+    character.attack+=character.baseAttack;
+    
+    rewrite();
 
-/*
-    $('#character1').prepend(ryu.imageSelect)
-    $('#character2').prepend(ken.imageSelect)
-    $('#character3').prepend(guile.imageSelect)
-    $('#enemy1').prepend(bison.imageSelect)
-    $('#enemy2').prepend(sagat.imageSelect)
-    $('#enemy3').prepend(vega.imageSelect)
-
-
-
-
-    $("#character1").on("click", function()
+    if(character.health <= 0)
     {
-        if (!characterChosen)
-        {
-            characterChosen = true;
-            console.log("chose1");
-        }
-    });
-    $("#character2").on("click", function()
-    {
-        if (!characterChosen)
-        {
-            characterChosen = true;
-            console.log("chose2");
-        }
-    });
-    $("#character3").on("click", function()
-    {
-        if (!characterChosen)
-        {
-            characterChosen = true;
-            console.log("chose3");
-        }
-    });
+        //LOSE GAME CODE
+        $("#attackButton").hide();
+        $("#fightStatus").hide();
+
+        var characterDiv = "#"+character.name;
+        console.log("REEEEEEEEEEEEEEEEE  "+characterDiv)
+        $(characterDiv).hide();
+        $("#characterStatus").html("<h1> YOU LOST! PLAY AGAIN? </h1>");
+        $("#playButton").show();
 
     
+    }
+    
+    if(enemy.health <= 0)
+    {    
+        $("#fightStatus").empty();
+        var enemyDiv = "#"+enemy.name;
+        $(enemyDiv).remove();
+        $("#enemyContainer").show();
+        enemyStage();
+
+    }
 
 
 
+});
 
-    $("#enemy1").on("click", function()
-    {
-        if (characterChosen)
-        {
-            enemyChosen = true;
-            console.log("chose1");
-        }
-    });
-    $("#enemy2").on("click", function()
-    {
-        if (characterChosen)
-        {
-            enemyChosen = true;
-            console.log("chose2");
-        }
-    });
-    $("#enemy3").on("click", function()
-    {
-        if (characterChosen)
-        {
-            enemyChosen = true;
-            console.log("chose3");
-        }
-    });
-
-
-    if(characterChosen && enemyChosen)
-    console.log("WE DID IT");*/
 
 
 });
