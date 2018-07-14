@@ -12,6 +12,7 @@ var ryu =
   attack: 5,
   health: 100,
   originalHealth: 100,
+  visible: true,
 }
 
 var ken =
@@ -21,6 +22,7 @@ var ken =
   attack: 4,
   health: 125,
   originalHealth: 125,
+  visible: true,
 }
 
 var guile =
@@ -30,6 +32,7 @@ var guile =
   attack: 3,
   health: 150,
   originalHealth: 150,
+  visible: true,
 
 }
 
@@ -39,7 +42,9 @@ var bison =
   baseAttack: 20,
   attack: 20,
   health: 200,
-  originalHealth: 200,  
+  originalHealth: 200,
+  div: "#bison",
+  visible: true,
 }
 
 var vega =
@@ -49,6 +54,8 @@ var vega =
   attack: 5,
   health: 100,
   originalHealth: 100,
+  div: "#vega",
+  visible: true,
 }
 
 var sagat =
@@ -58,6 +65,8 @@ var sagat =
   attack: 5,
   health: 150,
   originalHealth: 150,
+  div: "#sagat",
+  visible: true,
 }
 
 var characterArray = [ryu, ken, guile, bison, sagat, vega];
@@ -73,13 +82,13 @@ for (i = 0 ; i<characterArray.length; i++)
 {
     characterArray[i].health = characterArray[i].originalHealth;
     characterArray[i].attack = characterArray[i].baseAttack;
-
+    characterArray[i].visible = true;
 }
     rewrite();
     
     
     
-    
+    $("#graveyard").show();
     
     $("#ryu").show();
     $("#ken").show();
@@ -88,8 +97,8 @@ for (i = 0 ; i<characterArray.length; i++)
 
     $("#attackContainer").hide();
     $("#enemyContainer").hide();
-    $("#defenderStatus").hide();
     $("#defenderContainer").hide();
+    $("#playButton").hide();
 
 
     $("#characterStatus").html("<h1>PICK YOUR CHARACTER</h1>");
@@ -105,11 +114,10 @@ function enemyStage()
     $("#enemyContainer").show();
     $("#attackContainer").hide();
     $("#defenderContainer").hide();
-
-
-
-
 }
+
+
+//REWRITES ALL DIVS TO VALUES STORED
 
 function rewrite()
 
@@ -118,22 +126,25 @@ function rewrite()
     $(characterDiv).text(character.health);
     $("#characterAttack").text(character.attack);
 
-    var enemyHealthDiv = "#"+enemy.name+"Health";
-    $(enemyHealthDiv).text(enemy.health);
+    for(i = 0; i<characterArray.length; i++)
+    {
+        
+        var enemyHealthDiv = "#"+characterArray[i].name+"Health";
+        $(enemyHealthDiv).text(characterArray[i].health);
+        
+        if(!characterArray[i].visible)
+        $(characterArray[i].div).hide();
+
+        else
+        $(characterArray[i].div).show();
+    }
+    
 }
 
-
-function toDiv(text)
-{
-    var div = "#"+text;
-    return div; 
-}
-
-
+//CLICK A CHARACTER
 
 $(".character").on("click", function() {
 
-    
 
     $( "#ryu" ).hide();
     $( "#ken" ).hide();
@@ -148,6 +159,7 @@ $(".character").on("click", function() {
     
 });
 
+//CLICK AN ENEMY
 
 $(".enemy").on("click", function() {
     
@@ -158,7 +170,7 @@ $(".enemy").on("click", function() {
     $("#playButton").hide();
 
     $("#defenderContainer").show();
-    $("#defenderStatus").show();
+
 
     $("#attackButton").show();
 
@@ -195,9 +207,11 @@ $("#attackButton").on("click", function() {
     {
         //LOSE GAME CODE
         $("#attackButton").hide();
-        $("#fightStatus").hide();
+        $("#defenderContainer").hide();
+        $("#fightStatus").text("");
 
-        //$("defender").empty();
+        $(enemy.div).detach().appendTo("#enemyContainer");
+        
 
         var characterDiv = "#"+character.name;
         $(characterDiv).hide();
@@ -211,9 +225,11 @@ $("#attackButton").on("click", function() {
     {    
         $("#fightStatus").empty();
         var enemyDiv = "#"+enemy.name;
-        $(enemyDiv).remove();
+        $(enemyDiv).detach().appendTo("#enemyContainer");
+        enemy.visible = false;
         $("#enemyContainer").show();
         enemyStage();
+        rewrite();
 
     }
 
