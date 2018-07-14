@@ -73,26 +73,27 @@ for (i = 0 ; i<characterArray.length; i++)
 {
     characterArray[i].health = characterArray[i].originalHealth;
     characterArray[i].attack = characterArray[i].baseAttack;
+
 }
+    rewrite();
+    
+    
+    
+    
+    
+    $("#ryu").show();
+    $("#ken").show();
+    $("#guile").show();
 
-$("#enemyStatus").hide();
-$("#bison").hide();
-$("#vega").hide();
-$("#sagat").hide();
 
-$("#ryu").show();
-$("#ken").show();
-$("#guile").show();
+    $("#attackContainer").hide();
+    $("#enemyContainer").hide();
+    $("#defenderStatus").hide();
+    $("#defenderContainer").hide();
 
 
-
-$("#attackButton").hide();
-$("#fightStatus").hide();
-$("#defenderStatus").hide();
-$("#playButton").hide();
-
-$("#characterStatus").html("<h1>PICK YOUR CHARACTER</h1>");
-$("#characterContainer").show();
+    $("#characterStatus").html("<h1>PICK YOUR CHARACTER</h1>");
+    $("#characterContainer").show();
 
 }
 
@@ -101,15 +102,12 @@ play();
 
 function enemyStage()
 {
-    $("#attackButton").hide();
-    $("#fightStatus").hide();
+    $("#enemyContainer").show();
+    $("#attackContainer").hide();
+    $("#defenderContainer").hide();
 
-    $("#enemyStatus").show();
-    $("#defenderStatus").hide();
 
-    $("#bison").show();
-    $("#vega").show();
-    $("#sagat").show();
+
 
 }
 
@@ -118,18 +116,24 @@ function rewrite()
 {
     var characterDiv = "#"+character.name+"Health";
     $(characterDiv).text(character.health);
-    $("#characterAttack").text(eval(character).attack);
+    $("#characterAttack").text(character.attack);
 
     var enemyHealthDiv = "#"+enemy.name+"Health";
     $(enemyHealthDiv).text(enemy.health);
 }
 
 
-
+function toDiv(text)
+{
+    var div = "#"+text;
+    return div; 
+}
 
 
 
 $(".character").on("click", function() {
+
+    
 
     $( "#ryu" ).hide();
     $( "#ken" ).hide();
@@ -150,10 +154,14 @@ $(".enemy").on("click", function() {
     enemy = $(this).val();
     $(this).detach().appendTo("defender");
     $("#enemyContainer").hide();
+    $("#attackContainer").show();
+    $("#playButton").hide();
+
+    $("#defenderContainer").show();
     $("#defenderStatus").show();
 
     $("#attackButton").show();
-    $("#fightStatus").show();
+
     
 });
 
@@ -189,8 +197,9 @@ $("#attackButton").on("click", function() {
         $("#attackButton").hide();
         $("#fightStatus").hide();
 
+        //$("defender").empty();
+
         var characterDiv = "#"+character.name;
-        console.log("REEEEEEEEEEEEEEEEE  "+characterDiv)
         $(characterDiv).hide();
         $("#characterStatus").html("<h1> YOU LOST! PLAY AGAIN? </h1>");
         $("#playButton").show();
