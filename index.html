@@ -13,7 +13,7 @@
   
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <img src="assets/images/logo.png" class="img-fluid" alt="Responsive image" style="display: block; margin-left: auto; margin-right: auto">
+        <img src="assets/images/logo.png" class="img-fluid" alt="Responsive image" style="display: block; margin-left: auto; margin-right: auto; height: 35%; width: 35%">
       <p class="lead" style="text-align: center">Street Fighter Web Based Game!</p>
     </div>
   </div>
@@ -34,7 +34,7 @@
             <div class = "description">
               RYU <br>
               HEALTH: <div id = "ryuHealth" style="display:inline"> 100 </div><br>
-              ATTACK: <div id = "ryuAttack" style="display:inline"> 5 </div>
+              ATTACK: <div id = "ryuAttack" style="display:inline"> 6 </div>
             </div>
 
             <img class="characterSelect" src="assets/images/ryu_character_select.jpg" style="float:left"/>
@@ -59,8 +59,8 @@
           <button id="guile" class="btn btn-primary character" value="guile">
             <div class = "description">
               Guile <br>
-              HEALTH: <div class = "guileHealth" style="display:inline"> 150 </div><br>
-              ATTACK: <div class = "guileAttack" style="display:inline"> 3 </div>
+              HEALTH: <div id = "guileHealth" style="display:inline"> 175 </div><br>
+              ATTACK: <div id = "guileAttack" style="display:inline"> 3 </div>
             </div>
 
             <img class="characterSelect" src="assets/images/guile_character_select.jpg" style="float:left"/>
@@ -68,12 +68,12 @@
           </button>
         </div>
                    
-        <div id = "attackContainer">
-          <button id="attackButton" class="btn btn-primary attackButton" value="">Attack!</button>
-            <div id = "fightStatus">FIGHT STATUS</div>         
+        <div id = "attackContainer" style="position: relative; left: 20px">
+          <button id="attackButton" class="btn btn-danger btn-lg attackButton" value="">Attack!</button>
+            <div id = "fightStatus"><h3>FIGHT STATUS</h3></div>         
         </div>
 
-        <button id="playButton" class="btn btn-primary btn-lg" value="">Play Again!</button>
+        <button id="playButton" class="btn btn-primary btn-lg" style="position: relative; left: 20px" value="">Play Again!</button>
 
       </div>
 
@@ -101,7 +101,7 @@
                     <div class = "description">
                       Bison <br>
                       HEALTH: <div id = "bisonHealth" style="display:inline"> 100 </div><br>
-                      ATTACK: <div id = "bisonAttack" style="display:inline"> 100 </div>
+                      ATTACK: <div id = "bisonAttack" style="display:inline"> 20 </div>
         
                     </div>
         

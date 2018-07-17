@@ -8,8 +8,8 @@ $(document).ready(function() {
 var ryu =
 {
   name: "ryu",
-  baseAttack: 5,
-  attack: 5,
+  baseAttack: 6,
+  attack: 6,
   health: 100,
   originalHealth: 100,
   visible: true,
@@ -30,8 +30,8 @@ var guile =
   name: "guile",
   baseAttack: 3,
   attack: 3,
-  health: 150,
-  originalHealth: 150,
+  health: 175,
+  originalHealth: 175,
   visible: true,
 
 }
@@ -70,7 +70,7 @@ var sagat =
 }
 
 var characterArray = [ryu, ken, guile, bison, sagat, vega];
-
+var wins = 0;
 
 
 var character = "";
@@ -87,9 +87,7 @@ for (i = 0 ; i<characterArray.length; i++)
     rewrite();
     
     
-    
-    $("#graveyard").show();
-    
+        
     $("#ryu").show();
     $("#ken").show();
     $("#guile").show();
@@ -112,6 +110,7 @@ play();
 function enemyStage()
 {
     $("#enemyContainer").show();
+    $("#enemyStatus").show();
     $("#attackContainer").hide();
     $("#defenderContainer").hide();
 }
@@ -124,7 +123,9 @@ function rewrite()
 {
     var characterDiv = "#"+character.name+"Health";
     $(characterDiv).text(character.health);
-    $("#characterAttack").text(character.attack);
+    var attackDiv = "#"+character.name+"Attack";
+    $(attackDiv).text(character.attack);
+   
 
     for(i = 0; i<characterArray.length; i++)
     {
@@ -170,16 +171,14 @@ $(".enemy").on("click", function() {
     $("#playButton").hide();
 
     $("#defenderContainer").show();
-
-
     $("#attackButton").show();
 
     
 });
 
 $("#playButton").on("click", function() {
-    
-console.log("LOLOLOL");
+
+wins = 0;
 play();
     
 });
@@ -194,8 +193,9 @@ $("#attackButton").on("click", function() {
     enemy = eval(enemy);
 
 
-    $("#fightStatus").text(character.name +" ATTACKED " + enemy.name + " FOR "+ character.attack+" DAMAGE!");
-    $("#fightStatus").append("<p>"+ enemy.name +" COUNTER ATTACKED FOR "+enemy.attack +" damage!");
+    $("#fightStatus").text(character.name +" attacked " + enemy.name + " for "+ character.attack+" damage!");
+    $("#fightStatus").append("<p>"+ enemy.name +" counter attacked for "+enemy.attack +" damage!");
+    $("#fightStatus").append("<p>"+ character.name +"'s attack increased by "+character.baseAttack);
 
     character.health-=enemy.attack;
     enemy.health-=character.attack;
@@ -211,7 +211,7 @@ $("#attackButton").on("click", function() {
         $("#fightStatus").text("");
 
         $(enemy.div).detach().appendTo("#enemyContainer");
-        
+        $("#enemyContainer").hide();
 
         var characterDiv = "#"+character.name;
         $(characterDiv).hide();
@@ -222,14 +222,38 @@ $("#attackButton").on("click", function() {
     }
     
     if(enemy.health <= 0)
-    {    
-        $("#fightStatus").empty();
+    {   
+        wins++;
+
         var enemyDiv = "#"+enemy.name;
         $(enemyDiv).detach().appendTo("#enemyContainer");
         enemy.visible = false;
-        $("#enemyContainer").show();
-        enemyStage();
-        rewrite();
+        $("#fightStatus").empty();
+        $("#attackButton").hide();
+        $("#enemyContainer").hide();
+
+
+
+        if(wins===3)
+        {
+            $("#characterStatus").html("<h1> YOU WIN! PLAY AGAIN? </h1>");
+            $("#playButton").show();
+        }
+
+        else{
+
+            enemyStage();
+            rewrite();
+
+
+        }
+       
+
+        
+        
+
+
+        
 
     }
 
